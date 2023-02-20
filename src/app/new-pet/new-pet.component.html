@@ -1,0 +1,59 @@
+<form [formGroup]="newPetForm">
+    <div>
+        <label for="name">Name</label>
+        <input type="text" formControlName="name" />
+        <div class="error" *ngIf="newPetForm.controls['name']?.errors">*Name field is required or too long/ too short
+        </div>
+        <div class="error" *ngIf="newPetForm.controls['name'].errors?.['maxLength']">*Name is too long</div>
+        <div class="error" *ngIf="newPetForm.controls['name'].errors?.['minlength']">*Name is too short</div>
+    </div>
+
+    <div>
+        <label for="age">Age</label>
+        <input type="number" formControlName="age" />
+        <div class="error" *ngIf="newPetForm.controls['description']?.errors">*Age field is required or too small</div>
+        <div class="error" *ngIf="newPetForm.controls['description'].errors?.['min']">*Age is too small</div>
+    </div>
+
+    <div>
+        <label for="type">Type</label>
+        <select id="type" required [(ngModel)]="pet.type" name="type">
+            <option *ngFor="let type of types" [value]="type">{{type}}</option>
+        </select>
+        <div class="error" *ngIf="newPetForm.controls['type']?.errors">*A type must be selected</div>
+    </div>
+
+    <div>
+        <label for="color">Color</label>
+        <div>
+            <input id="white" type="radio" value="true" name="color" formControlName="color">
+            <label for="white">White</label>
+        </div>
+
+        <div>
+            <input id="black" type="radio" value="false" name="color" formControlName="color">
+            <label for="black">Black</label>
+        </div>
+
+        <div class="error" *ngIf="newPetForm.controls['color']?.errors">*A color must be selected</div>
+    </div>
+
+    <button (click)="saveForm()" [disabled]="newPetForm.invalid">Submit</button>
+</form>
+
+
+<div>
+    <div>
+        <h1>Add a new pet</h1>
+        <form>
+            <div>
+                <label for="name">Name</label>
+                <input type="text" id="name" required>
+            </div>
+
+            
+
+            <button type="submit" class="btn btn-success">Submit</button>
+
+        </form>
+    </div>

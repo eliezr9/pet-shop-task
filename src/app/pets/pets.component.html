@@ -1,0 +1,11 @@
+<ul>
+    <li *ngFor="let pet of pets">
+        <div>
+            <h2>{{pet.name | uppercase}}</h2>
+            <h3>Age: {{pet.age}}</h3>
+            <h3>Type: {{pet.type}}</h3>
+            <h3 *ngIf="pet.color === true">Color: White</h3>
+            <h3 *ngIf="pet.color === false">Color: Black</h3>
+        </div>
+    </li>
+</ul>
